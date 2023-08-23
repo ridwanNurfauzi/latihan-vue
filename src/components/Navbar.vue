@@ -7,13 +7,13 @@
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Ridwan NrF</span>
             </a>
             <div class="flex md:order-2">
-                <div v-if="isAuthenticated" class="mr-8 hover:bg-slate-400 hover:bg-opacity-50 dark:text-white rounded-xl transition-all">
-                    <div class="fixed ml-[28px] -mt-[10px] bg-yellow-500 dark:bg-yellow-500 dark:bg-opacity-80 text-white px-2 rounded-lg">
-                        <!-- Number -->
-                        99+
-                    </div>
+                <div v-if="isAuthenticated" class="mr-8 relative hover:bg-slate-400 hover:bg-opacity-50 dark:text-white rounded-xl transition-all">
                     <div class="h-full flex flex-wrap px-3 justify-center items-center align-middle">
                         <i class="bi bi-cart text-xl font-semibold"></i>
+                    </div>
+                    <div class="absolute text-sm bottom-full left-full -translate-x-[50%] translate-y-[50%] bg-yellow-500 dark:bg-yellow-500 dark:bg-opacity-80 text-white px-2 rounded-md">
+                        <!-- Number -->
+                        99+
                     </div>
                 </div>
                 <router-link to="/login" v-if="isAuthenticated != true"
