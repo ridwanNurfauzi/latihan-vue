@@ -7,13 +7,15 @@
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Ridwan NrF</span>
             </a>
             <div class="flex md:order-2">
-                <div v-if="isAuthenticated" class="mr-8 relative hover:bg-slate-400 hover:bg-opacity-50 dark:text-white rounded-xl transition-all">
+                <div v-if="isAuthenticated"
+                    class="mr-8 relative hover:bg-slate-400 hover:bg-opacity-50 dark:text-white rounded-xl transition-all">
                     <div class="h-full flex flex-wrap px-3 justify-center items-center align-middle">
                         <i class="bi bi-cart text-xl font-semibold"></i>
                     </div>
-                    <div class="absolute text-sm bottom-full left-full -translate-x-[50%] translate-y-[50%] bg-yellow-500 dark:bg-yellow-500 dark:bg-opacity-80 text-white px-2 rounded-md">
+                    <div v-if="cart.cart_items != undefined && cart.cart_items.data.length > 0"
+                        class="absolute text-sm bottom-full left-full -translate-x-[50%] translate-y-[50%] bg-yellow-500 dark:bg-yellow-500 dark:bg-opacity-80 text-white px-2 rounded-md">
                         <!-- Number -->
-                        99+
+                        {{ cart.cart_items.data.length }}
                     </div>
                 </div>
                 <router-link to="/login" v-if="isAuthenticated != true"
@@ -93,11 +95,12 @@
             </div>
         </div>
     </nav>
+    <!-- {{ cart }} -->
 </template>
 
 <script>
 import { ref } from "vue";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 import $ from "jquery";
 
 export default {
@@ -105,7 +108,12 @@ export default {
         idMenu: Number
     },
     computed: {
-        ...mapGetters('auth', ['isAuthenticated'])
+        ...mapGetters('auth', ['isAuthenticated']),
+        ...mapState('cart', ['cart'])
+    },
+    mounted() {
+        this.$store.dispatch("cart/fetchCartData", localStorage.getItem('token'))
+        // console.log(localStorage.getItem('token'))
     },
     methods: {
         ...mapActions('auth', ['logout']),

@@ -24,6 +24,14 @@
                         </div> -->
                         <div>
                             <!-- <p>{{ product.description }}</p> -->
+                            <button v-if="isAuthenticated"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 md:mr-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Tambah ke keranjang
+                            </button>
+                            <button v-else @click="$router.push('/login')"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 md:mr-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Tambah ke keranjang
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -45,24 +53,24 @@ export default {
     data() {
         return {
             // product: null,
-            rateToStar(val) {
-                const starFill = '<i class="bi bi-star-fill"></i>';
-                const starHalf = '<i class="bi bi-star-half"></i>';
-                const star = '<i class="bi bi-star"></i>';
-                let txtHTML = '';
-                for (let i = 0; i <= 4; i++) {
-                    if (val - i >= 0.75) {
-                        txtHTML += starFill;
-                    }
-                    else if (val - i > 0.25) {
-                        txtHTML += starHalf;
-                    }
-                    else {
-                        txtHTML += star;
-                    }
-                }
-                return txtHTML;
-            },
+            // rateToStar(val) {
+            //     const starFill = '<i class="bi bi-star-fill"></i>';
+            //     const starHalf = '<i class="bi bi-star-half"></i>';
+            //     const star = '<i class="bi bi-star"></i>';
+            //     let txtHTML = '';
+            //     for (let i = 0; i <= 4; i++) {
+            //         if (val - i >= 0.75) {
+            //             txtHTML += starFill;
+            //         }
+            //         else if (val - i > 0.25) {
+            //             txtHTML += starHalf;
+            //         }
+            //         else {
+            //             txtHTML += star;
+            //         }
+            //     }
+            //     return txtHTML;
+            // },
         }
     },
     setup(props, context) {
@@ -85,7 +93,8 @@ export default {
         this.$store.dispatch("product/fetchProductBySlug", this.product_slug)
     },
     computed: {
-        ...mapState('product', ['product'])
+        ...mapState('product', ['product']),
+        ...mapGetters('auth', ['isAuthenticated'])
     }
 }
 </script>
