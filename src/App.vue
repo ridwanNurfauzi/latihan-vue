@@ -3,11 +3,16 @@ import HelloWorld from './components/HelloWorld.vue'
 </script> -->
 
 <template>
-  <div class="sticky top-0 z-[100000]">
-    <Navbar :id-menu="idMenu" :key="idMenu"></Navbar>
-  </div>
-  <div>
-    <RouterView @id-menu="setMenu($event)"></RouterView>
+  <div class="flex flex-col min-h-[100vh]">
+    <div class="sticky top-0 z-[100000]">
+      <Navbar :id-menu="idMenu" :key="idMenu"></Navbar>
+    </div>
+    <div class="flex-grow flex-shrink">
+      <RouterView @id-menu="setMenu($event)"></RouterView>
+    </div>
+    <div>
+      <FooterComponent></FooterComponent>
+    </div>
   </div>
 </template>
 
@@ -15,22 +20,24 @@ import HelloWorld from './components/HelloWorld.vue'
 import { RouterLink, RouterView } from 'vue-router'
 import { ref } from "vue";
 import Navbar from './components/Navbar.vue';
+import FooterComponent from './components/FooterComponent.vue'
 
 export default {
   components: {
-    Navbar
+    Navbar,
+    FooterComponent
   },
-  setup(){
-      const idMenu = ref(0);
+  setup() {
+    const idMenu = ref(0);
 
-      function setMenu(id) {
-        idMenu.value = id;
-      }
-      return {
-        idMenu,
-        setMenu
-      }
+    function setMenu(id) {
+      idMenu.value = id;
     }
+    return {
+      idMenu,
+      setMenu
+    }
+  }
 }
 </script>
 <style scoped>

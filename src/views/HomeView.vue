@@ -3,24 +3,14 @@
 </script> -->
 
 <template>
-  <div>
+  <div class="dark:bg-gray-800 dark:text-white min-h-[100vh]">
     <h2 class="text-3xl font-semibold text-center">Halaman Home</h2>
-    <input type="text" v-model="msg" class="border"><br>
-    {{
-      function () {
-        let txt;
-        txt = msg.replace(/ +(?= )/g,'');
-        if (msg.length > 25) {
-          txt = txt.slice(0, 22) + '. . .';
-        } else {
-          txt = txt;
-        }
-        return txt
-      }()
-    }}
-    <br>
-    <pre>
-    {{ msg }}</pre>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel tempore, optio incidunt aperiam autem cum
+      temporibus velit dicta mollitia iure. Quisquam voluptatum optio iure quas enim placeat, atque omnis!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel tempore, optio incidunt aperiam autem cum
+      temporibus velit dicta mollitia iure. Quisquam voluptatum optio iure quas enim placeat, atque omnis!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel tempore, optio incidunt aperiam autem cum
+      temporibus velit dicta mollitia iure. Quisquam voluptatum optio iure quas enim placeat, atque omnis!</p>
   </div>
 </template>
 
@@ -29,19 +19,19 @@
 import { onMounted } from "vue";
 
 export default {
-  data(){
+  data() {
     return {
       msg: ''
     }
   },
   setup(props, context) {
-        onMounted(() => {
-            try {
-                context.emit("id-menu", 1 )
-            } catch (error) {
-                console.log(error)
-            }
-        })
-    }
+    onMounted(() => {
+      try {
+        context.emit("id-menu", 1)
+      } catch (error) {
+        console.log(error)
+      }
+    })
+  }
 }
 </script>

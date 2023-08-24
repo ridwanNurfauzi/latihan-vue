@@ -1,24 +1,25 @@
 <template>
-    <div class="flex">
-        <div class="mx-4 xl:max-w-7xl xl:mx-auto">
-            <h2 class="text-center text-2xl my-4 font-semibold">
-                Halaman Brand
-            </h2>
-            <div>
-                <p>
-                    Brands total : {{ brands.length }}
-                </p>
-            </div>
-            <div class="flex flex-wrap justify-center">
-                <div v-for="brand in brands">
-                    <!-- <RouterLink :to="'/brand/' + brand"> -->
-                    <div class="m-3 w-[250px] group hover:shadow-md border cursor-pointer rounded-t-lg rounded-b-lg">
+    <div class="min-h-screen dark:text-white">
+        <div class="flex">
+            <div class="mx-4 xl:max-w-7xl xl:mx-auto">
+                <h2 class="text-center text-2xl my-4 font-semibold">
+                    Halaman Brand
+                </h2>
+                <div>
+                    <p>
+                        Brands total : {{ brands.length }}
+                    </p>
+                </div>
+                <div class="flex flex-wrap justify-center">
+                    <div v-for="brand in brands">
+                        <!-- <RouterLink :to="'/brand/' + brand"> -->
+                        <div class="m-3 w-[250px] group hover:shadow-md bg-white hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-500 dark:hover:bg-opacity-[.5] transition-all border cursor-pointer rounded-t-lg rounded-b-lg">
 
-                        <div class="my-5">
-                            <h2 class="text-center text-xl font-semibold">{{ brand.name }}</h2>
-                            <h2 class="text-center text-lg">{{ brand.slug }}</h2>
-                        </div>
-                        <!-- <div class="my-5" v-if="products.length != 0">
+                            <div class="my-5">
+                                <h2 class="text-center text-xl font-semibold">{{ brand.name }}</h2>
+                                <h2 class="text-center text-lg">{{ brand.slug }}</h2>
+                            </div>
+                            <!-- <div class="my-5" v-if="products.length != 0">
                                 <p class="text-center">
                                     Products total :
                                     {{
@@ -29,8 +30,9 @@
                                 </p>
                             </div> -->
 
+                        </div>
+                        <!-- </RouterLink> -->
                     </div>
-                    <!-- </RouterLink> -->
                 </div>
             </div>
         </div>
