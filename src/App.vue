@@ -4,7 +4,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <div class="flex flex-col min-h-[100vh]">
-    <div class="sticky top-0 z-[100000]">
+    <div class="sticky top-0 z-[1000]">
       <Navbar :id-menu="idMenu" :key="idMenu"></Navbar>
     </div>
     <div class="flex-grow flex-shrink">
@@ -14,6 +14,9 @@ import HelloWorld from './components/HelloWorld.vue'
       <FooterComponent></FooterComponent>
     </div>
   </div>
+  <div>
+    <CartSide></CartSide>
+  </div>
 </template>
 
 <script>
@@ -21,11 +24,13 @@ import { RouterLink, RouterView } from 'vue-router'
 import { ref } from "vue";
 import Navbar from './components/Navbar.vue';
 import FooterComponent from './components/FooterComponent.vue'
+import CartSide from './components/CartSide.vue'
 
 export default {
   components: {
     Navbar,
-    FooterComponent
+    FooterComponent,
+    CartSide
   },
   setup() {
     const idMenu = ref(0);

@@ -9,7 +9,7 @@
                 </a>
                 <div class="flex md:order-2">
                     <div v-if="isAuthenticated" class="mr-8 relative">
-                        <button
+                        <button @click="toggle_cartside"
                             class="h-full flex flex-wrap px-3 justify-center items-center align-middle hover:bg-slate-400 hover:bg-opacity-50 dark:text-white rounded-xl transition-all">
                             <i class="bi bi-cart text-xl font-semibold"></i>
                         </button>
@@ -108,7 +108,7 @@
             </div>
         </nav>
     </div>
-    <!-- {{ cart }} -->
+    <!-- {{ showCartSide }} -->
 </template>
 
 <script>
@@ -122,7 +122,7 @@ export default {
     },
     computed: {
         ...mapGetters('auth', ['isAuthenticated']),
-        ...mapState('cart', ['cart'])
+        ...mapState('cart', ['cart']),
     },
     mounted() {
         this.$store.dispatch("cart/fetchCartData", localStorage.getItem('token'))
@@ -130,6 +130,7 @@ export default {
     },
     methods: {
         ...mapActions('auth', ['logout']),
+        ...mapActions('cart', ['toggle_cartside']),
         _logout() {
             let cnfrm = confirm('Apakah Anda yakin ingin melakukan logout?');
             if (cnfrm) {

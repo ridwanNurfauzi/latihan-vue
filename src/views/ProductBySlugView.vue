@@ -24,13 +24,13 @@
                                     class="bi bi-people"></i> {{ product.rating.count }}</span>
                             </div> -->
                             <div class="my-4">
-                                <button @click="subtractCart"
+                                <button @click="decrementQty"
                                 class="text-xl dark:text-white bg-gray-100 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg px-4 py-2 text-center mr-1 md:mr-1 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-500 transition-all">
                                     &minus;
                                 </button>
-                                <input class="text-xl dark:text-white bg-gray-50 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg px-4 py-2 text-center mr-1 md:mr-1 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-500 transition-all"
+                                <input class="text-xl dark:text-white bg-gray-50 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg px-4 py-2 text-center mr-1 md:mr-1 dark:bg-gray-700 dark:hover:bg-gray-600 w-24 dark:focus:ring-gray-500 transition-all"
                                 type="number" min="1" v-model="qty" name="qty" id="qty">
-                                <button @click="addCart"
+                                <button @click="incrementQty"
                                 class="text-xl dark:text-white bg-gray-100 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg px-4 py-2 text-center mr-1 md:mr-1 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-500 transition-all">
                                     &plus;
                                 </button>
@@ -92,12 +92,12 @@ export default {
         }
     },
     methods: {
-        subtractCart(){
+        decrementQty(){
             if (this.qty > 1) {
                 this.qty--;
             }
         },
-        addCart(){
+        incrementQty(){
             this.qty++;
         },
         ...mapActions('cart', ['addCartData'])
