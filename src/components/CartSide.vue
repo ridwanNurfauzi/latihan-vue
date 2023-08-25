@@ -4,7 +4,7 @@
         <div class="flex flex-row w-full h-screen items-stretch">
             <div @click="toggle_cartside" class="flex-1">
                 <!-- <div class="text-white">
-                    {{ cart.cart_items }}</div> -->
+                    {{ cart }}</div> -->
             </div>
             <div class="h-screen min-w-full sm:min-w-[400px] max-w-sm bg-white dark:bg-slate-800">
                 <div class="w-full h-screen flex flex-col">

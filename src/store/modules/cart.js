@@ -30,13 +30,10 @@ const auth = {
                 commit("CART_INFO", { success: false, err });
             }
         },
-        async addCartData({ commit, dispatch }, data) {
+        async addCartData({ commit, dispatch }, param) {
             try {
                 const response = await axios.post('https://ecommerce.olipiskandar.com/api/v1/carts/add',
-                    {
-                        "variation_id": data.variation_id,
-                        "qty": data.qty
-                    },
+                    param,
                     {
                         headers: {
                             Authorization: `Bearer ${localStorage.token}`
@@ -99,10 +96,7 @@ const auth = {
         async change_qty({ commit, dispatch }, param){
             try {
                 const response = await axios.post('https://ecommerce.olipiskandar.com/api/v1/carts/change-quantity',
-                    {
-                        cart_id: param.cart_id,
-                        type: param.type
-                    },
+                    param,
                     {
                         headers: {
                             Authorization: `Bearer ${localStorage.token}`
@@ -125,10 +119,7 @@ const auth = {
             state.cart = cart;
         },
         TOGGLE_CARTSIDE(state) {
-
             state.showCartSide = !state.showCartSide;
-            // else
-            //     alert('error')
         }
     }
 }
