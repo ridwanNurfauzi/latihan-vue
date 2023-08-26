@@ -5,6 +5,7 @@ import product from "./modules/product";
 import category from "./modules/category";
 import brand from "./modules/brand";
 import cart from "./modules/cart";
+import checkout from "./modules/checkout"
 
 export default createStore({
     modules: {
@@ -12,6 +13,7 @@ export default createStore({
         product,
         category,
         brand,
-        cart
+        cart,
+        checkout
     }
 });

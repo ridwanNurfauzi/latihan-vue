@@ -103,13 +103,6 @@ export default {
         ...mapActions('cart', ['addCartData'])
     },
     setup(props, context) {
-        // const productDetail = this.products.find((e)=>{
-        //     return e.id = props.product_slug
-        // })
-
-        // return {
-        //     productDetail
-        // }
         onMounted(() => {
             try {
                 context.emit("id-menu", 0)

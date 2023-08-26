@@ -51,6 +51,12 @@ const router = createRouter({
       beforeEnter: cekToken
     },
     {
+      path: '/checkout',
+      name: 'checkout',
+      component: () => import('../views/CheckoutView.vue'),
+      beforeEnter: cekToken
+    },
+    {
       path: '/login',
       name: 'login',
       // route level code-splitting
