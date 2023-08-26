@@ -13,15 +13,12 @@ const auth = {
         async fetchCartData({ commit }, token) {
             try {
                 const response = await axios.post('https://ecommerce.olipiskandar.com/api/v1/carts',
-                    {
-                        _temp: null
-                    },
+                    {},
                     {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
                     });
-                // console.log(response.data);
                 commit("CART_INFO", response.data);
             }
             catch (err) {
@@ -40,25 +37,11 @@ const auth = {
                         }
                     });
                 alert("Berhasil menambah ke keranjang");
-
-                // console.log(response.data);
-                // commit("CART_INFO", response.data);
             }
             catch (err) {
                 console.log(err);
                 console.log({ success: false, err });
             } finally {
-                // const response = await axios.post('https://ecommerce.olipiskandar.com/api/v1/carts',
-                //     {
-                //         _temp: null
-                //     },
-                //     {
-                //         headers: {
-                //             Authorization: `Bearer ${localStorage.token}`
-                //         }
-                //     });
-                // // console.log(response.data);
-                // commit("CART_INFO", response.data);
                 dispatch('cart/fetchCartData', localStorage.token, {root: true});
             }
         },
@@ -78,17 +61,6 @@ const auth = {
                 console.log(error)
             }
             finally {
-                // const response = await axios.post('https://ecommerce.olipiskandar.com/api/v1/carts',
-                //     {
-                //         _temp: null
-                //     },
-                //     {
-                //         headers: {
-                //             Authorization: `Bearer ${localStorage.token}`
-                //         }
-                //     });
-                // // console.log(response.data);
-                // commit("CART_INFO", response.data);
                 dispatch('cart/fetchCartData', localStorage.token, {root: true});
             }
         },

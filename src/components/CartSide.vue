@@ -3,8 +3,8 @@
         :class="{ hidden: !showCartSide }">
         <div class="flex flex-row w-full h-screen items-stretch">
             <div @click="toggle_cartside" class="flex-1">
-                <!-- <div class="text-white">
-                    {{ cart }}</div> -->
+                <div class="text-white">
+                    {{ cart }}</div>
             </div>
             <div class="h-screen min-w-full sm:min-w-[400px] max-w-sm bg-white dark:bg-slate-800">
                 <div class="w-full h-screen flex flex-col">
@@ -28,13 +28,43 @@
                                     <div class="h-8">
                                         <div v-for="cartData in cart.cart_items.data"
                                             class="p-2 rounded-xl shadow-md border m-2 flex">
-                                            <img src="/img/placeholder.jpg" width="50" alt="product">
+                                            <div class="my-auto px-1">
+                                                <label
+      class="relative flex cursor-pointer items-center rounded-full p-3"
+      for="checkbox-8"
+      data-ripple-dark="true"
+    >
+                                                <input type="checkbox"
+                                                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-blue-500 checked:bg-blue-500 checked:before:bg-blue-500 hover:before:opacity-10"
+                                                    id="checkbox-8" defaultChecked />
+                                                    <div class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-3.5 w-3.5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          stroke="currentColor"
+          stroke-width="1"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </div>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <img src="/img/placeholder.jpg" width="50" alt="product">
+                                            </div>
                                             <div class="my-auto ms-1">
                                                 <h2 class="font-semibold">
                                                     {{ cartData.name }}
                                                 </h2>
                                                 <div class="border border-gray-300 dark:border dark:border-gray-500">
-                                                    <button @click="change_qty({cart_id: cartData.cart_id, type: 'minus'})"
+                                                    <button
+                                                        @click="change_qty({ cart_id: cartData.cart_id, type: 'minus' })"
                                                         class="px-2 border-r border-gray-300 dark:border-r dark:border-gray-500 hover:bg-gray-400 dark:hover:bg-slate-700">
                                                         &minus;
                                                     </button>
@@ -43,7 +73,7 @@
                                                     :value="cartData.qty"
                                                     class="w-10 dark:bg-slate-800" type="number"> -->
                                                     {{ cartData.qty }}
-                                                    <button @click="change_qty({cart_id: cartData.cart_id, type: 'plus'})"
+                                                    <button @click="change_qty({ cart_id: cartData.cart_id, type: 'plus' })"
                                                         class="px-2 border-l border-gray-300 dark:border-l dark:border-gray-500 hover:bg-gray-400 dark:hover:bg-slate-700">
                                                         &plus;
                                                     </button>
@@ -55,9 +85,8 @@
                                                 </h4>
                                             </div>
                                             <div class="ms-auto my-auto">
-                                                <button
-                                                @click="delete_cartData(cartData.cart_id)"
-                                                class="py-1 px-2 bg-red-500 text-white hover:bg-red-400 rounded-lg">
+                                                <button @click="delete_cartData(cartData.cart_id)"
+                                                    class="py-1 px-2 bg-red-500 text-white hover:bg-red-400 rounded-lg">
                                                     <i class="bi bi-trash"></i>
                                                 </button>
                                             </div>
