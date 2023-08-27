@@ -7,8 +7,8 @@ import HelloWorld from './components/HelloWorld.vue'
     <div class="sticky top-0 z-[1000]">
       <Navbar :id-menu="idMenu" :key="idMenu"></Navbar>
     </div>
-    <div class="flex-grow flex-shrink">
-      <RouterView @id-menu="setMenu($event)"></RouterView>
+    <div class="flex-1 flex flex-col">
+      <RouterView class="flex-1" @id-menu="setMenu($event)"></RouterView>
     </div>
     <div>
       <FooterComponent></FooterComponent>

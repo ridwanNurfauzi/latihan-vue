@@ -1,16 +1,23 @@
 <template>
-    <div class="min-h-screen dark:text-white">
-        <div>
-            <h2 class="text-xl font-semibold text-center">
-                Profile
-            </h2>
-            <div v-if="isAuthenticated && userData.user != undefined">
-                <p>Nama : {{ userData.user.name }}</p>
-                <p>Email : {{ userData.user.email }}</p>
-                <!-- {{  userData }} -->
-            </div>
-            <div v-else>
-                Mohon maaf anda belum login
+    <div class="dark:text-white flex flex-col items-center">
+        <div class="w-full xl:max-w-7xl">
+            <div class="px-4">
+                <h2 class="text-xl font-semibold text-center">
+                    Profile
+                </h2>
+                <div v-if="isAuthenticated && !userData.user">
+                    Loading..
+                </div>
+                <div v-else-if="isAuthenticated && !!userData.user">
+                    <div>
+                        <p>Nama : {{ userData.user.name }}</p>
+                        <p>Email : {{ userData.user.email }}</p>
+                        <p v-if="!!userData.user.phone">No Telp : {{ userData.user.phone }}</p>
+                    </div>
+                </div>
+                <div v-else>
+                    Mohon maaf anda belum login
+                </div>
             </div>
         </div>
     </div>

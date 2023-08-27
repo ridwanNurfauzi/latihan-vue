@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen dark:text-white">
+    <div class="dark:text-white">
         <div class="flex">
             <div class="mx-4 xl:max-w-7xl xl:mx-auto">
                 <h2 class="text-center text-2xl my-4 font-semibold">

@@ -3,7 +3,7 @@
 </script> -->
 
 <template>
-  <div class="dark:bg-gray-800 dark:text-white min-h-[100vh]">
+  <div class="dark:bg-gray-800 dark:text-white">
     <h2 class="text-3xl font-semibold text-center">Halaman Home</h2>
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel tempore, optio incidunt aperiam autem cum
       temporibus velit dicta mollitia iure. Quisquam voluptatum optio iure quas enim placeat, atque omnis!</p>

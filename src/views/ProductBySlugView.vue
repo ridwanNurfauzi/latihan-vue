@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen dark:text-white">
+    <div class="dark:text-white">
         <div class="flex">
             <div class="mx-4 xl:max-w-7xl xl:mx-auto">
                 <div class="lg:container sm:grid sm:grid-cols-2 sm:gap-2">

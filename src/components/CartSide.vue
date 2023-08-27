@@ -1,16 +1,27 @@
 <template>
-    <div id="cart-side" class="fixed top-0 left-0 w-full h-screen z-[2000] bg-gray-950 bg-opacity-60 dark:text-white"
-        :class="{ hidden: !showCartSide }">
-        <div class="flex flex-row w-full h-screen items-stretch">
+    <div id="cart-side" class="fixed top-0 left-0 w-full h-screen z-[2000]  dark:text-white"
+    :class="{hide: !showCartSide}"
+    >
+        <div class="fixed top-0 left-0 w-full h-screen bg-gray-950 bg-opacity-75" :class="{
+            hide: showCartSide == false,
+            fadeIn: showCartSide,
+            fadeOut: showCartSide == false
+        }"></div>
+        <div class="fixed flex flex-row w-full h-screen items-stretch">
             <div @click="toggle_cartside" class="flex-1">
                 <!-- <div class="text-white">
                     {{ cart }}</div> -->
             </div>
-            <div class="h-screen min-w-full sm:min-w-[400px] max-w-sm bg-white dark:bg-slate-800">
+            <div class="h-screen min-w-full sm:min-w-[400px] max-w-sm bg-white dark:bg-slate-800"
+            :class="{
+                swipeIn: showCartSide,
+                swipeOut: showCartSide == false
+            }"
+            >
                 <div class="w-full h-screen flex flex-col">
                     <div class="border-b shadow-md p-3 flex flex-nowrap">
                         <div>
-                            <h2 class="text-lg font-semibold">Cart</h2>
+                            <h2 class="text-lg font-semibold">Keranjang</h2>
                         </div>
                         <div class="ms-auto text-xl">
                             <button class="transition-all px-2 hover:bg-red-500 hover:text-white" @click="toggle_cartside">
@@ -21,31 +32,13 @@
                     <div class="flex-1 flex flex-col">
                         <div v-if="cart.cart_items" class="flex-1 flex flex-col">
                             <div class="p-2 border-b">
-                                <h2 class="font-semibold">Total Item : {{ cart.cart_items.data.length }}</h2>
+                                <h2 class="font-semibold">Jumlah Item : {{ cart.cart_items.data.length }}</h2>
                             </div>
                             <div class="p-2 flex-1 flex">
                                 <div class="flex-1 overflow-y-scroll text-sm">
-                                    <div class="h-8">
+                                    <div class="h-0 overflow-y-visible">
                                         <div v-for="cartData in cart.cart_items.data"
                                             class="p-2 rounded-xl shadow-md border m-2 flex">
-                                            <div class="my-auto px-1">
-                                                <label class="relative flex cursor-pointer items-center rounded-full p-3"
-                                                    for="checkbox-8" data-ripple-dark="true">
-                                                    <input type="checkbox"
-                                                        class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-blue-500 checked:bg-blue-500 checked:before:bg-blue-500 hover:before:opacity-10"
-                                                        id="checkbox-8" defaultChecked />
-                                                    <div
-                                                        class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5"
-                                                            viewBox="0 0 20 20" fill="currentColor" stroke="currentColor"
-                                                            stroke-width="1">
-                                                            <path fill-rule="evenodd"
-                                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                                clip-rule="evenodd"></path>
-                                                        </svg>
-                                                    </div>
-                                                </label>
-                                            </div>
                                             <div>
                                                 <img src="/img/placeholder.jpg" width="50" alt="product">
                                             </div>
@@ -60,9 +53,6 @@
                                                         &minus;
                                                     </button>
                                                     QTY :
-                                                    <!-- <input 
-                                                    :value="cartData.qty"
-                                                    class="w-10 dark:bg-slate-800" type="number"> -->
                                                     {{ cartData.qty }}
                                                     <button @click="change_qty({ cart_id: cartData.cart_id, type: 'plus' })"
                                                         class="px-2 border-l border-gray-300 dark:border-l dark:border-gray-500 hover:bg-gray-400 dark:hover:bg-slate-700">

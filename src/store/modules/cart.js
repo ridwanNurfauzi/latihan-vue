@@ -4,7 +4,7 @@ const auth = {
     namespaced: true,
     state: {
         cart: [],
-        showCartSide: false
+        showCartSide: null
     },
     getters: {
         getCart: (state) => state.cart

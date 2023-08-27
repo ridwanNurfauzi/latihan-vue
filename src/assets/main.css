@@ -3,6 +3,77 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hide {
+  visibility: hidden;
+}
+
+.fadeIn {
+  animation: fadeIn-animation .6s;
+}
+
+@keyframes fadeIn-animation {
+  from {
+    visibility: visible;
+    opacity: 0;
+  }
+
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.fadeOut {
+  animation: fadeOut-animation .6s;
+}
+
+@keyframes fadeOut-animation {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.s{
+  transform: translateX(100%);
+}
+
+.swipeIn{
+  animation: swipeIn-animation .6s;
+}
+@keyframes swipeIn-animation {
+  from {
+    transform: translateX(100%);
+    visibility: visible;
+  }
+  to {
+    transform: translateX(0%);
+    visibility: visible;
+  }
+}
+
+.swipeOut{
+  animation: swipeOut-animation .6s;
+  transform: translateX(100%);
+}
+@keyframes swipeOut-animation {
+  from {
+    transform: translateX(0%);
+    visibility: visible;
+  }
+  to {
+    transform: translateX(100%);
+    visibility: hidden;
+  }
+}
+
+
 /* 
 #app {
   max-width: 1280px;
