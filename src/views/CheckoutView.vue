@@ -1,6 +1,8 @@
 <template>
-    <div v-for="addressData in address">
-        {{addressData}}
+    <div>
+        <div v-for="addressData in address">
+            {{ addressData }}
+        </div>
     </div>
 </template>
 
@@ -9,7 +11,7 @@ import { onMounted } from "vue";
 import { mapActions, mapState } from "vuex";
 
 export default {
-    data(){
+    data() {
         return {}
     },
     computed: {
@@ -18,7 +20,7 @@ export default {
     methods: {
         ...mapActions('checkout', ['fetchAddress'])
     },
-    beforeMount(){
+    beforeMount() {
         this.fetchAddress();
     },
     setup(props, context) {

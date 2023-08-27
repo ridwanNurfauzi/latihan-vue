@@ -1,7 +1,6 @@
 <template>
     <div id="cart-side" class="fixed top-0 left-0 w-full h-screen z-[2000]  dark:text-white"
-    :class="{hide: !showCartSide}"
-    >
+        :class="{ hide: !showCartSide }">
         <div class="fixed top-0 left-0 w-full h-screen bg-gray-950 bg-opacity-75" :class="{
             hide: showCartSide == false,
             fadeIn: showCartSide,
@@ -12,12 +11,10 @@
                 <!-- <div class="text-white">
                     {{ cart }}</div> -->
             </div>
-            <div class="h-screen min-w-full sm:min-w-[400px] max-w-sm bg-white dark:bg-slate-800"
-            :class="{
+            <div class="h-screen min-w-full sm:min-w-[400px] max-w-sm bg-white dark:bg-slate-800" :class="{
                 swipeIn: showCartSide,
                 swipeOut: showCartSide == false
-            }"
-            >
+            }">
                 <div class="w-full h-screen flex flex-col">
                     <div class="border-b shadow-md p-3 flex flex-nowrap">
                         <div>
@@ -79,8 +76,18 @@
                     </div>
                     <div class="p-4 border-t">
                         <div v-if="cart.cart_items">
-                            <h2 class="font-semibold">{{ 'Harga Total: Rp.' + totalPrice(cart.cart_items.data) }}</h2>
-                            <!-- {{ cart.cart_items.data }} -->
+                            <div class="flex flex-col pb-2">
+                                <div class="mb-4">
+                                    <h2 class="font-semibold">
+                                        {{ 'Harga Total: Rp.' + totalPrice(cart.cart_items.data) }}
+                                    </h2>
+                                </div>
+                                <!-- {{ cart.cart_items.data }} -->
+                                <button @click="checkout"
+                                    class="md:block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    Checkout
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -105,6 +112,9 @@ export default {
             });
 
             return _temp;
+        },
+        checkout(){
+            this.$router.push('/checkout');
         }
     }
 }
