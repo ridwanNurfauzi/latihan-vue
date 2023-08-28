@@ -3,6 +3,7 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import 'flowbite';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'sweetalert2';
 
 import App from './App.vue'
 import store from "./store";

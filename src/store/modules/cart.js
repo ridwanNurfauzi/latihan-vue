@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const auth = {
     namespaced: true,
@@ -36,7 +37,14 @@ const auth = {
                             Authorization: `Bearer ${localStorage.token}`
                         }
                     });
-                alert("Berhasil menambah ke keranjang");
+                // alert("Berhasil menambah ke keranjang");
+                Swal.fire({
+                    title: 'Berhasil menambah produk ke keranjang.',
+                    text: '',
+                    timer: 2000,
+                    icon: 'success',
+                    showConfirmButton: false
+                  });
             }
             catch (err) {
                 console.log(err);

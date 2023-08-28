@@ -8,7 +8,7 @@
         }"></div>
         <div class="fixed flex flex-row w-full h-screen items-stretch">
             <div @click="toggle_cartside" class="flex-1">
-                <div v-if="!!cart.cart_items" class="text-white">
+                <!-- <div v-if="!!cart.cart_items" class="text-white">
                     {{ function(){
                         let arr = [];
                         cart.cart_items.data.forEach(e => {
@@ -17,7 +17,7 @@
                         console.log(arr)
                         return arr
                     }() }}
-                    {{ cart.cart_items.data }}</div>
+                    {{ cart.cart_items.data }}</div> -->
             </div>
             <div class="h-screen min-w-full sm:min-w-[400px] max-w-sm bg-white dark:bg-slate-800" :class="{
                 swipeIn: showCartSide,

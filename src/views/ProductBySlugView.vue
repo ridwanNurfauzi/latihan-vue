@@ -76,25 +76,6 @@ export default {
     ],
     data() {
         return {
-            // product: null,
-            // rateToStar(val) {
-            //     const starFill = '<i class="bi bi-star-fill"></i>';
-            //     const starHalf = '<i class="bi bi-star-half"></i>';
-            //     const star = '<i class="bi bi-star"></i>';
-            //     let txtHTML = '';
-            //     for (let i = 0; i <= 4; i++) {
-            //         if (val - i >= 0.75) {
-            //             txtHTML += starFill;
-            //         }
-            //         else if (val - i > 0.25) {
-            //             txtHTML += starHalf;
-            //         }
-            //         else {
-            //             txtHTML += star;
-            //         }
-            //     }
-            //     return txtHTML;
-            // },
             qty: 1
         }
     },

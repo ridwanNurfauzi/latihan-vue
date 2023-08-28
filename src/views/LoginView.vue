@@ -46,6 +46,7 @@
 <script>
 import { onMounted } from "vue";
 import { mapActions } from "vuex";
+import Swal from 'sweetalert2';
 
 export default {
     data() {
@@ -67,7 +68,11 @@ export default {
                 this.$router.push('/')
             }
             else {
-                alert("Login failed")
+                // alert("Login failed")
+                Swal.fire({
+                    icon: 'error',
+                    titleText: 'Login gagal.'
+                });
             }
         }
     },

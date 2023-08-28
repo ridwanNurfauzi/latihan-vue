@@ -1,12 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import Swal from 'sweetalert2'
 
 function cekToken(to, from, next) {
   if (!!localStorage.getItem('token') && localStorage.getItem('token') != 'undefined') {
     next()
   } else {
-    alert('Mohon login terlebih dahulu!')
-    next('/login')
+    // alert('Mohon login terlebih dahulu!');
+    Swal.fire({
+      title: 'Akses ditolak!',
+      text: 'Mohon login terlebih dahulu.',
+      icon: 'warning'
+    }).then(() => {
+      next('/login');
+    })
   }
 };
 
@@ -55,6 +62,13 @@ const router = createRouter({
       name: 'checkout',
       component: () => import('../views/CheckoutView.vue'),
       beforeEnter: cekToken
+    },
+    {
+      path: '/order/:order_code',
+      name: 'order',
+      component: () => import('../views/OrderView.vue'),
+      beforeEnter: cekToken,
+      props: true
     },
     {
       path: '/login',

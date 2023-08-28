@@ -118,6 +118,7 @@
 import { ref } from "vue";
 import { mapActions, mapGetters, mapState } from "vuex";
 import $ from "jquery";
+import Swal from 'sweetalert2';
 
 export default {
     props: {
@@ -135,11 +136,18 @@ export default {
         ...mapActions('auth', ['logout']),
         ...mapActions('cart', ['toggle_cartside']),
         _logout() {
-            let cnfrm = confirm('Apakah Anda yakin ingin melakukan logout?');
-            if (cnfrm) {
-                this.logout();
-                this.$router.push('/login');
-            }
+            // let cnfrm = confirm('Apakah Anda yakin ingin melakukan logout?');
+            Swal.fire({
+                icon: 'question',
+                text: 'Apakah Anda yakin ingin melakukan logout?',
+                showCancelButton: true
+            }).then((result) => {
+                console.log(result.isConfirmed)
+                if (result.isConfirmed) {
+                    this.logout();  
+                    this.$router.push('/login');
+                }
+            })
         },
         navToggle() {
             $("#navbar-sticky").slideToggle();
