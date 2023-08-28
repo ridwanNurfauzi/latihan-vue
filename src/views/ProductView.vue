@@ -1,12 +1,12 @@
 <template>
     <div class="dark:text-white">
         <div class="flex">
-            <div class="mx-4 xl:max-w-7xl xl:mx-auto">
+            <div class="mx-4 w-full xl:max-w-7xl xl:mx-auto">
                 <h2 class="text-center text-2xl my-4 font-semibold">
-                    Halaman Produk
+                    Produk
                 </h2>
-                <div class="">
-                    <p>Product total : {{ products.length }}</p>
+                <div class="text-center">
+                    <p>Jumlah Produk : {{ products.length }}</p>
                 </div>
                 <div v-if="products.length != undefined" class="flex flex-wrap justify-center">
                     <div class="m-3 w-[200px] group hover:shadow-md bg-white hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-500 dark:hover:bg-opacity-[.5] transition-all border cursor-pointer rounded-t-lg rounded-b-lg"

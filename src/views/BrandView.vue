@@ -1,13 +1,13 @@
 <template>
     <div class="dark:text-white">
         <div class="flex">
-            <div class="mx-4 xl:max-w-7xl xl:mx-auto">
+            <div class="mx-4 w-full xl:max-w-7xl xl:mx-auto">
                 <h2 class="text-center text-2xl my-4 font-semibold">
-                    Halaman Brand
+                    Brand
                 </h2>
-                <div>
+                <div class="text-center">
                     <p>
-                        Brands total : {{ brands.length }}
+                        Jumlah Brand : {{ brands.length }}
                     </p>
                 </div>
                 <div class="flex flex-wrap justify-center">
