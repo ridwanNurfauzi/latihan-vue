@@ -31,9 +31,8 @@
                         </div>
                     </div>
                     <div class="flex flex-col">
-                        <div 
-                        @click="showAddAddress = true"
-                        class="p-3 rounded-lg bg-green-600 hover:bg-green-500 text-white cursor-pointer">
+                        <div @click="showAddAddress = true"
+                            class="p-3 rounded-lg bg-green-600 hover:bg-green-500 text-white cursor-pointer">
                             <h2 class="text-center font-bold">Tambah Alamat &plus;</h2>
                         </div>
                     </div>
@@ -67,12 +66,39 @@
                         <h2 class="font-semibold text-lg">Opsi Pengiriman</h2>
                         <div class="flex flex-wrap">
                             <div class="">
-                                <input v-model="shipping_address_id" type="radio" name="delivery_type: "
-                                    value="standard" class="hidden">
-                                <label>
-                                    <div class="m-3 border dark:border-gray-600 p-4 rounded-lg" :class="{}">
+                                <input v-model="delivery_type" type="radio" name="delivery_type" id="standard" value="standard"
+                                    class="hidden">
+                                <label for="standard">
+                                    <div class="m-3 border dark:border-gray-600 p-4 rounded-lg" :class="{
+                                        'border-4': delivery_type == 'standard',
+                                        'border-blue-400': delivery_type == 'standard',
+                                        'dark:border-blue-600': delivery_type == 'standard',
+                                        'bg-blue-600': delivery_type == 'standard',
+                                        'bg-opacity-20': delivery_type == 'standard',
+                                    }">
                                         <div>
-                                            
+                                            <h2 class="font-semibold text-lg">
+                                                Standard
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="">
+                                <input v-model="delivery_type" type="radio" name="delivery_type" id="express" value="express"
+                                    class="hidden">
+                                <label for="express">
+                                    <div class="m-3 border dark:border-gray-600 p-4 rounded-lg" :class="{
+                                        'border-4': delivery_type == 'express',
+                                        'border-blue-400': delivery_type == 'express',
+                                        'dark:border-blue-600': delivery_type == 'express',
+                                        'bg-blue-600': delivery_type == 'express',
+                                        'bg-opacity-20': delivery_type == 'express',
+                                    }">
+                                        <div>
+                                            <h2 class="font-semibold text-lg">
+                                                Express
+                                            </h2>
                                         </div>
                                     </div>
                                 </label>
@@ -84,13 +110,11 @@
                 {{ billing_address_id }} -->
             </div>
         </div>
-        <div class="fixed top-0 left-0 w-full h-screen z-[2010] bg-gray-950 bg-opacity-40"
-        :class="{
+        <div class="fixed top-0 left-0 w-full h-screen z-[2010] bg-gray-950 bg-opacity-40" :class="{
             hide: !showAddAddress,
             fadeIn: showAddAddress,
-            fadeOut : showAddAddress == false
-        }"
-        >
+            fadeOut: showAddAddress == false
+        }">
             <div class="flex flex-col h-screen py-5 overflow-auto">
                 <div class="p-5 rounded-xl bg-white sm:w-[620px] my-auto sm:mx-auto">
                     <h2 class="text-center font-semibold text-lg mb-6">Tambah Alamat</h2>
