@@ -25,20 +25,22 @@
                             </div> -->
                             <div class="my-4">
                                 <button @click="decrementQty"
-                                class="text-xl dark:text-white bg-gray-100 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg px-4 py-2 text-center mr-1 md:mr-1 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-500 transition-all">
+                                    class="text-xl dark:text-white bg-gray-100 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg px-4 py-2 text-center mr-1 md:mr-1 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-500 transition-all">
                                     &minus;
                                 </button>
-                                <input class="text-xl dark:text-white bg-gray-50 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg px-4 py-2 text-center mr-1 md:mr-1 dark:bg-gray-700 dark:hover:bg-gray-600 w-24 dark:focus:ring-gray-500 transition-all"
-                                type="number" min="1" v-model="qty" name="qty" id="qty">
+                                <input
+                                    class="text-xl dark:text-white bg-gray-50 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg px-4 py-2 text-center mr-1 md:mr-1 dark:bg-gray-700 dark:hover:bg-gray-600 w-24 dark:focus:ring-gray-500 transition-all"
+                                    type="number" min="1" v-model="qty" name="qty" id="qty">
                                 <button @click="incrementQty"
-                                class="text-xl dark:text-white bg-gray-100 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg px-4 py-2 text-center mr-1 md:mr-1 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-500 transition-all">
+                                    class="text-xl dark:text-white bg-gray-100 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg px-4 py-2 text-center mr-1 md:mr-1 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-500 transition-all">
                                     &plus;
                                 </button>
                                 <!-- {{ qty }} -->
                             </div>
                             <div>
                                 <!-- <p>{{ product.description }}</p> -->
-                                <button v-if="isAuthenticated" @click="addCartData({variation_id: product.variations[0].id, qty })"
+                                <button v-if="isAuthenticated"
+                                    @click="addCartData({ variation_id: product.variations[0].id, qty })"
                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 md:mr-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     Tambah ke keranjang
                                 </button>
@@ -49,12 +51,17 @@
                             </div>
                         </div>
                     </div>
+
+                </div>
+                <div class="py-2 px-4 md:px-8">
+                    <h2 class="text-center font-semibold text-xl my-3">Deskripsi</h2>
+                    <p>
+                        {{ product.description }}
+                    </p>
                 </div>
             </div>
-            <!-- {{ product }} -->
+            <!-- {{ product.description }} -->
         </div>
-        <!-- {{ product.variations.id }} -->
-        <!-- {{ product.variations }} -->
     </div>
 </template>
 
@@ -92,12 +99,12 @@ export default {
         }
     },
     methods: {
-        decrementQty(){
+        decrementQty() {
             if (this.qty > 1) {
                 this.qty--;
             }
         },
-        incrementQty(){
+        incrementQty() {
             this.qty++;
         },
         ...mapActions('cart', ['addCartData'])

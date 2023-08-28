@@ -14,10 +14,10 @@
                         <RouterLink :to="'/product/' + data.slug">
                             <div class="flex flex-col h-full">
                                 <div class="mb-3">
-                                    <!-- <div class="overflow-hidden w-[200px] h-[200px] rounded-t-lg">
+                                    <div class="overflow-hidden w-[200px] h-[200px] rounded-t-lg">
                                         <img class="transition-all group-hover:scale-125 group-hover:opacity-75"
-                                            :src="data.image" :alt="data.name">
-                                    </div> -->
+                                            src="/img/placeholder.jpg" :alt="data.name">
+                                    </div>
                                     
                                     <div class="px-2" v-if="data.name">
                                         <h3 class="font-semibold text-md" v-if="data.name.length >= 25">{{
@@ -40,7 +40,7 @@
                                         </p>
                                     </div> -->
                                     <div>
-                                        <h2 class="font-bold text-lg font-mono">Rp.{{ data.base_price }}</h2>
+                                        <h2 class="font-bold font-mono">Rp.{{ data.base_price }}</h2>
                                     </div>
                                     <div class="text-sm text-gray-500">
                                         {{ data.category }}
@@ -50,13 +50,13 @@
                         </RouterLink>
                     </div>
                 </div>
+                <!-- {{ products }} -->
 
                 <h2 class="text-center text-xl font-bold my-12" v-if="products == undefined || products.length == 0">
                     Loading ...
                 </h2>
             </div>
         </div>
-        <!-- {{ products }} -->
     </div>
 </template>
 
