@@ -8,7 +8,14 @@
                     </h2>
                     <div v-if="!!address" class="my-6">
                         <h2 class="font-semibold text-lg">Alamat Pengiriman</h2>
-                        <div class="flex flex-wrap">
+                        <div class="w-full p-4" v-if="address.length <= 0">
+                            <div class="w-full border rounded-lg px-2 py-10 text-gray-700 dark:text-gray-400">
+                                <h2 class="text-center">Anda belum menambahkan Alamat. <br>
+                                    Silahkan Tambahkan alamat terlebih dahulu
+                                </h2>
+                            </div>
+                        </div>
+                        <div v-else class="flex flex-wrap">
                             <div class="" v-for="addressData in address">
                                 <input v-model="shipping_address_id" type="radio" name="shipping_address_id"
                                     :id="'shipping_address_' + addressData.id" :value="addressData.id" class="hidden">
@@ -38,7 +45,14 @@
                     </div>
                     <div v-if="!!address" class="my-6">
                         <h2 class="font-semibold text-lg">Alamat Penagihan</h2>
-                        <div class="flex flex-wrap">
+                        <div class="w-full p-4" v-if="address.length <= 0">
+                            <div class="w-full border rounded-lg px-2 py-10 text-gray-700 dark:text-gray-400">
+                                <h2 class="text-center">Anda belum menambahkan Alamat. <br>
+                                    Silahkan Tambahkan alamat terlebih dahulu
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap" v-else>
                             <div class="" v-for="addressData in address">
                                 <input v-model="billing_address_id" type="radio" name="billing_address"
                                     :id="'billing_address_' + addressData.id" :value="addressData.id" class="hidden">
@@ -223,7 +237,7 @@
                             class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 md:mr-1 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
                             Batal
                         </button>
-                        <button
+                        <button @click="_add_address"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 md:mr-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Tambah Alamat
                         </button>
@@ -238,6 +252,7 @@
 <script>
 import { onMounted } from "vue";
 import { mapActions, mapState } from "vuex";
+import Swal from "sweetalert2";
 
 export default {
     data() {
@@ -276,7 +291,8 @@ export default {
             'fetchAllStates',
             'fetchAllCities',
             'fetch_cart_item_ids',
-            'order'
+            'order',
+            'add_address'
         ]),
         totalPrice(param) {
             let _temp = 0;
@@ -299,16 +315,29 @@ export default {
                 }
             )
         },
-        unitTest() {
-            console.log({
-                shipping_address_id: this.shipping_address_id,
-                billing_address_id: this.billing_address_id,
-                delivery_type: this.delivery_type,
-                payment_type: this.payment_type,
-                cart_item_ids: this.cart_item_ids,
-                transactionId: this.transactionId,
-                receipt: this.receipt
-            })
+        async _add_address() {
+            try {
+                const add = await this.add_address(this.addAddress);
+                if (add) {
+                    Swal.fire({
+                        titleText: "Alamat berhasil ditambahkan.",
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 2000
+                    }).then(() => {
+                        this.showAddAddress = false
+                    })
+                }
+                else {
+                    Swal.fire({
+                        titleText: "Alamat tidak berhasil ditambah.",
+                        icon: 'error',
+                    })
+                }
+                console.log(add)
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
     beforeMount() {
@@ -327,3 +356,9 @@ export default {
     },
 }
 </script>
+
+<style>
+.swal2-container {
+    z-index: 40000 !important;
+}
+</style>

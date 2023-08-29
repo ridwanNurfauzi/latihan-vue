@@ -80,10 +80,11 @@ const checkout = {
                 console.log(err);
             }
         },
-        async _addAddress({ commit, dispatch }, data) {
+        async add_address({ commit, dispatch }, data) {
             const token = localStorage.token;
+            let response;
             try {
-                const response = await axios.post('https://ecommerce.olipiskandar.com/api/v1/user/address/create',
+                response = await axios.post('https://ecommerce.olipiskandar.com/api/v1/user/address/create',
                     data,
                     {
                         headers: {
@@ -92,14 +93,16 @@ const checkout = {
                     });
                 // commit("SET_ORDERDATA", response.data);
                 // location.pathname = '/order/' + response.data.order_code
-                // console.log(response.data.data)
+                console.log(response.data)
             }
             catch (err) {
                 console.log(err);
+                return false;
             }
             finally{
                 dispatch('checkout/fetchAddress', null, {root: true})
             }
+            return response.data.success;
         },
         async order({ commit }, data) {
             const token = localStorage.token;

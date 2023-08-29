@@ -1,6 +1,6 @@
 <template>
     <div
-        class="min-w-full flex flex-col sm:align-middle sm:justify-center sm:items-center bg-[url('img/auth_bg.jpg')] bg-cover bg-center">
+        class="min-w-full flex flex-col sm:align-middle sm:justify-center sm:items-center bg-[url('/img/auth_bg.jpg')] bg-cover bg-center">
         <div
             class="sm:w-[525px] flex-grow sm:grow-0 bg-gray-100 dark:bg-gray-700 bg-opacity-60 dark:bg-opacity-60 backdrop-blur-[2px] sm:backdrop-blur-sm transition-all sm:rounded-2xl sm:my-4 shadow-2xl px-7 flex">
             <div class="flex-grow my-auto">

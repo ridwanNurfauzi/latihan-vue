@@ -66,7 +66,7 @@
                     <div class="p-4" v-if="!!user_order.orders">
                         <div class="grid grid-cols-2 py-3">
                             <div><b> Total Jumlah pesanan : </b></div>
-                            <div><p>{{ user_order.orders[0].grand_total }}</p></div>
+                            <div><p>Rp. {{ user_order.orders[0].grand_total }}</p></div>
                         </div>
                         <div class="grid grid-cols-2 py-3">
                             <div><b> Metode Pembayaran : </b></div>
