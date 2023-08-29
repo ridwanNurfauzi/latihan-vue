@@ -2,7 +2,7 @@
     <div class="dark:text-white">
         <div class="flex flex-col">
             <div class="px-4 w-full xl:max-w-7xl xl:mx-auto">
-                <form @submit.prevent="unitTest" action="" method="POST">
+                <form @submit.prevent="_order" action="" method="POST">
                     <h2 class="text-center text-2xl my-4 font-semibold">
                         Checkout
                     </h2>
@@ -141,7 +141,7 @@
                     </div>
                     <div class="my-4">
                         <button type="submit"
-                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 md:mr-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 md:mr-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Pesan sekarang
                         </button>
                     </div>
@@ -270,7 +270,14 @@ export default {
         ...mapState('checkout', ['address', 'countries', 'states', 'cities', 'cart_item_ids'])
     },
     methods: {
-        ...mapActions('checkout', ['fetchAddress', 'fetchAllCountries', 'fetchAllStates', 'fetchAllCities', 'fetch_cart_item_ids']),
+        ...mapActions('checkout', [
+            'fetchAddress',
+            'fetchAllCountries',
+            'fetchAllStates',
+            'fetchAllCities',
+            'fetch_cart_item_ids',
+            'order'
+        ]),
         totalPrice(param) {
             let _temp = 0;
             param.forEach(e => {
@@ -279,7 +286,20 @@ export default {
 
             return _temp;
         },
-        unitTest(){
+        _order() {
+            this.order(
+                {
+                    shipping_address_id: this.shipping_address_id,
+                    billing_address_id: this.billing_address_id,
+                    delivery_type: this.delivery_type,
+                    payment_type: this.payment_type,
+                    cart_item_ids: this.cart_item_ids,
+                    transactionId: this.transactionId,
+                    receipt: this.receipt
+                }
+            )
+        },
+        unitTest() {
             console.log({
                 shipping_address_id: this.shipping_address_id,
                 billing_address_id: this.billing_address_id,

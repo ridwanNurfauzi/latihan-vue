@@ -80,6 +80,27 @@ const checkout = {
                 console.log(err);
             }
         },
+        async _addAddress({ commit, dispatch }, data) {
+            const token = localStorage.token;
+            try {
+                const response = await axios.post('https://ecommerce.olipiskandar.com/api/v1/user/address/create',
+                    data,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    });
+                // commit("SET_ORDERDATA", response.data);
+                // location.pathname = '/order/' + response.data.order_code
+                // console.log(response.data.data)
+            }
+            catch (err) {
+                console.log(err);
+            }
+            finally{
+                dispatch('checkout/fetchAddress', null, {root: true})
+            }
+        },
         async order({ commit }, data) {
             const token = localStorage.token;
             try {
@@ -91,7 +112,8 @@ const checkout = {
                         }
                     });
                 commit("SET_ORDERDATA", response.data);
-                // console.log(response.data.data)
+                location.pathname = '/order/' + response.data.order_code
+                console.log(response.data)
             }
             catch (err) {
                 console.log(err);
