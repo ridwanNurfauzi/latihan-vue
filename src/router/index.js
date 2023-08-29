@@ -6,7 +6,6 @@ function cekToken(to, from, next) {
   if (!!localStorage.getItem('token') && localStorage.getItem('token') != 'undefined') {
     next()
   } else {
-    // alert('Mohon login terlebih dahulu!');
     Swal.fire({
       title: 'Akses ditolak!',
       text: 'Mohon login terlebih dahulu.',

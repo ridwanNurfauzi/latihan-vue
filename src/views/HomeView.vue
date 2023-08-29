@@ -2,7 +2,7 @@
   <div class="dark:text-white">
     <div class="flex flex-col">
       <div class="px-4 w-full xl:max-w-7xl xl:mx-auto">
-        <h2 class="text-center text-2xl my-4 font-semibold">
+        <h2 class="text-center text-3xl my-20 font-semibold">
           Kaka Shop
         </h2>
 

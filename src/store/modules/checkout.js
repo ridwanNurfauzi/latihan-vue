@@ -1,5 +1,8 @@
 import axios from "axios";
 
+import router from "@/router";
+import Swal from "sweetalert2";
+
 const checkout = {
     namespaced: true,
     state: {
@@ -115,7 +118,13 @@ const checkout = {
                         }
                     });
                 commit("SET_ORDERDATA", response.data);
-                location.pathname = '/order/' + response.data.order_code
+                // location.pathname = '/order/' + response.data.order_code
+                Swal.fire({
+                    titleText: '',
+                    text: 'Produk yang Anda pilih berhasil dipesan.',
+                    icon: 'success'
+                })
+                router.push('/order/' + response.data.order_code);
                 console.log(response.data)
             }
             catch (err) {

@@ -147,6 +147,42 @@
                             </div>
                         </div>
                     </div>
+                    <div class="w-full">
+                        <div>
+                            <h2 class="font-semibold text-lg">Produk yang Anda Pilih</h2>
+                        </div>
+                        <div v-if="!!cart.cart_items">
+                            <div class="p-3 snap-mandatory snap-x flex overflow-auto no-scrollbar">
+                                <div class="snap-center" v-for="cartData in cart.cart_items.data">
+                                    <div
+                                        class="m-3 w-[150px] group hover:shadow-md bg-white hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-500 dark:hover:bg-opacity-[.5] transition-all border cursor-pointer rounded-t-lg rounded-b-lg">
+                                        <div class="flex flex-col h-full">
+                                            <div class="mb-3">
+                                                <div class="overflow-hidden w-[150px] h-[150px] rounded-t-lg">
+                                                    <img class="transition-all group-hover:scale-125 group-hover:opacity-75"
+                                                        src="/img/placeholder.jpg">
+                                                </div>
+
+                                                <div class="px-2">
+                                                    <h3 class="font-semibold text-sm">{{ cartData.name }}</h3>
+                                                </div>
+                                            </div>
+                                            <div class="mt-auto p-2">
+                                                <div class="text-sm text-gray-500">
+                                                    QTY :
+                                                    {{ cartData.qty }}
+                                                </div>
+                                                <div>
+                                                    <h2 class="font-bold font-mono text-xs">Total : Rp. {{ cartData.regular_price * cartData.qty }}</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- {{ cart.cart_items.data }} -->
                     <div class="flex flex-wrap" v-if="!!cart.cart_items">
                         <div class="border p-2 bg-gray-200 dark:bg-gray-900">Jumlah yang harus dibayar</div>
                         <div class="border p-2 bg-gray-100 dark:bg-gray-800">
@@ -162,7 +198,7 @@
                 </form>
                 <!-- {{ shipping_address_id }}
                 {{ billing_address_id }} -->
-                {{ cart_item_ids }}
+                <!-- {{ cart_item_ids }} -->
             </div>
         </div>
         <div class="fixed top-0 left-0 w-full h-screen z-[2010] bg-gray-950 bg-opacity-40" :class="{
