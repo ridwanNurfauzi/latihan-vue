@@ -78,13 +78,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                        <div v-if="cart.cart_items.data.length <= 0" class="h-full flex flex-col">
+                                            <p class="text-gray-600 dark:text-gray-400 my-auto text-center">Anda Belum memesan apapun.</p>
+                                        </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="p-4 border-t">
                         <div v-if="cart.cart_items">
-                            <div class="flex flex-col pb-2">
+                            <div class="flex flex-col pb-2" v-if="cart.cart_items.data.length > 0">
                                 <div class="mb-4">
                                     <h2 class="font-semibold">
                                         {{ 'Harga Total: Rp.' + totalPrice(cart.cart_items.data) }}

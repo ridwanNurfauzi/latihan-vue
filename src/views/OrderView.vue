@@ -92,6 +92,13 @@
                     </div>
                 </div>
             </div>
+            <div class="w-full p-6 flex flex-col">
+                <button @click="$router.push('/')"
+                class="text-white transition-all bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                    Kembali ke halaman utama
+                </button>
+            </div>
         </div>
         <!-- {{ user_order }} -->
     </div>
@@ -110,10 +117,12 @@ export default {
     },
     methods: {
         ...mapActions('order', ['fetch_userInfo', 'fetch_userOrder']),
+        ...mapActions('cart', ['fetchCartData'])
     },
     mounted(){
         this.fetch_userInfo();
         this.fetch_userOrder(this.order_code);
+        this.fetchCartData();
     }
 }
 </script>
